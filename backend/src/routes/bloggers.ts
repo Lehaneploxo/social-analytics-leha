@@ -18,7 +18,7 @@ router.get('/:nick/videos', async (req: Request, res: Response) => {
   try {
     const { platform } = req.query
     const videos = await getBloggerVideos(
-      req.params.nick,
+      String(req.params.nick),
       platform ? String(platform) : undefined
     )
     res.json(videos)

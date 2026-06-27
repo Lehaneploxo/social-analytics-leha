@@ -25,7 +25,7 @@ router.get('/', async (req: Request, res: Response) => {
 // DELETE /api/videos/:id
 router.delete('/:id', requireAuth, async (req: Request, res: Response) => {
   try {
-    await deleteVideo(req.params.id)
+    await deleteVideo(String(req.params.id))
     res.json({ success: true })
   } catch (e) {
     res.status(500).json({ error: String(e) })
@@ -35,7 +35,7 @@ router.delete('/:id', requireAuth, async (req: Request, res: Response) => {
 // POST /api/videos/:id/refresh
 router.post('/:id/refresh', requireAuth, async (req: Request, res: Response) => {
   try {
-    const video = await refreshVideo(req.params.id)
+    const video = await refreshVideo(String(req.params.id))
     res.json(video)
   } catch (e) {
     res.status(500).json({ error: String(e) })
