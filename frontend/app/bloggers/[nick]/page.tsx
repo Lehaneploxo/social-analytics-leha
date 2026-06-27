@@ -55,8 +55,8 @@ export default function BloggerPage({ params }: Props) {
               <img
                 src={blogger.avatar}
                 alt=""
-                className="w-16 h-16 rounded-full object-cover ring-2"
-                style={{ ringColor: isTiktok ? '#ff2d55' : '#e1306c' }}
+                className="w-16 h-16 rounded-full object-cover"
+                style={{ border: `2px solid ${isTiktok ? '#ff2d55' : '#e1306c'}` }}
               />
             ) : (
               <div

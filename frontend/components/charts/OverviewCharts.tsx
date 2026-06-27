@@ -55,7 +55,7 @@ export function OverviewCharts({ bloggers, topVideos, tiktokTotal, instagramTota
           <BarChart data={top10Bloggers} layout="vertical">
             <XAxis type="number" tickFormatter={formatNumber} tick={{ fill: '#64648a', fontSize: 11 }} axisLine={false} tickLine={false} />
             <YAxis type="category" dataKey="name" tick={{ fill: '#94a3b8', fontSize: 11 }} width={80} axisLine={false} tickLine={false} />
-            <Tooltip contentStyle={TooltipStyle} formatter={(v: number) => formatNumber(v)} />
+            <Tooltip contentStyle={TooltipStyle} formatter={(v: unknown) => formatNumber(Number(v))} />
             <Bar dataKey="views" fill="#6366f1" radius={[0, 4, 4, 0]} />
           </BarChart>
         </ResponsiveContainer>
@@ -70,7 +70,7 @@ export function OverviewCharts({ bloggers, topVideos, tiktokTotal, instagramTota
           <BarChart data={top10Videos} layout="vertical">
             <XAxis type="number" tickFormatter={formatNumber} tick={{ fill: '#64648a', fontSize: 11 }} axisLine={false} tickLine={false} />
             <YAxis type="category" dataKey="name" tick={{ fill: '#94a3b8', fontSize: 11 }} width={80} axisLine={false} tickLine={false} />
-            <Tooltip contentStyle={TooltipStyle} formatter={(v: number) => formatNumber(v)} />
+            <Tooltip contentStyle={TooltipStyle} formatter={(v: unknown) => formatNumber(Number(v))} />
             <Bar dataKey="views" radius={[0, 4, 4, 0]}>
               {top10Videos.map((entry, i) => (
                 <Cell key={i} fill={entry.platform === 'tiktok' ? TIKTOK_COLOR : IG_COLOR} />
@@ -121,7 +121,7 @@ export function OverviewCharts({ bloggers, topVideos, tiktokTotal, instagramTota
                   <Cell key={i} fill={[TIKTOK_COLOR, IG_COLOR][i]} />
                 ))}
               </Pie>
-              <Tooltip contentStyle={TooltipStyle} formatter={(v: number) => formatNumber(v)} />
+              <Tooltip contentStyle={TooltipStyle} formatter={(v: unknown) => formatNumber(Number(v))} />
               <Legend wrapperStyle={{ color: '#94a3b8', fontSize: 12 }} />
             </PieChart>
           </ResponsiveContainer>
