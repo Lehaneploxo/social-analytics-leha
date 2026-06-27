@@ -1,9 +1,15 @@
 [build]
 builder = "nixpacks"
-buildCommand = "cd backend && npm install && npm run build"
+buildCommand = "cd backend && npm install && npx prisma generate && npm run build && npx prisma db push"
 
 [deploy]
 startCommand = "cd backend && npm start"
 healthcheckPath = "/health"
 healthcheckTimeout = 60
 restartPolicyType = "on_failure"
+
+[environments.production.variables]
+ADMIN_SECRET = "lehaneploxo2024"
+JWT_SECRET = "lehaneploxo_jwt_2024_secret"
+PORT = "3001"
+NODE_ENV = "production"
