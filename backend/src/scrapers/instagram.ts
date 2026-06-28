@@ -37,7 +37,7 @@ async function fetchAndDecompress(url: string): Promise<string> {
     validateStatus: (s) => s < 400,
   })
 
-  const encoding = resp.headers['content-encoding'] || ''
+  const encoding = String(resp.headers['content-encoding'] || '')
   const buf = Buffer.from(resp.data)
 
   try {
